@@ -4,7 +4,7 @@ const got = require('got')
 
 const { ZONE_ID, X_AUTH_EMAIL, X_AUTH_KEY } = process.env
 
-const getStatus = async healthchecks => {
+const getStatus = healthchecks => {
   const isHealthy = healthchecks.every(({ status }) => status === 'healthy')
   return isHealthy ? 'healthy' : 'degraded'
 }
@@ -20,5 +20,7 @@ module.exports = async () => {
     }
   ).json()
 
-  return getStatus(healthchecks)
+  return {
+    status: getStatus(healthchecks)
+  }
 }
