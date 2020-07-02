@@ -17,8 +17,10 @@
     "url": "https://github.com/healthcheck/issues"
   },
   "keywords": [
-    "microlink",
+    "cloudflare",
     "healthcheck",
+    "microlink",
+    "microservice",
     "requests"
   ],
   "dependencies": {
