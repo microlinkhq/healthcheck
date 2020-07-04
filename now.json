@@ -1,5 +1,4 @@
 {
-  "name": "microlink-healthcheck.now.sh",
   "version": 2,
   "builds": [
     {
