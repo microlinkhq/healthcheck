@@ -5,7 +5,9 @@ const got = require('got')
 const { ZONE_ID, X_AUTH_EMAIL, X_AUTH_KEY } = process.env
 
 const getStatus = healthchecks => {
-  const isHealthy = healthchecks.every(({ status }) => status === 'healthy')
+  const isHealthy = healthchecks
+    .filter(({ status }) => status !== 'suspended')
+    .every(({ status }) => status === 'healthy')
   return isHealthy ? 'healthy' : 'degraded'
 }
 
