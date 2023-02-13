@@ -3,12 +3,12 @@
 const debug = require('debug-logfmt')('healthcheck')
 const pReflect = require('p-reflect')
 const pTimeout = require('p-timeout')
-const { send } = require('micri')
+const send = require('send-http')
 
 const { MAX_CACHE = 60000, REQ_TIMEOUT = 8000 } = process.env
 const healthcheck = require('./healthcheck')
 
-let CACHE = {}
+let CACHE = Object.create(null)
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
