@@ -1,5 +1,6 @@
 <div align="center">
-  <img src="https://cdn.microlink.io/logo/banner.png" alt="microlink oss">
+  <img src="https://github.com/microlinkhq/cdn/raw/master/dist/logo/banner.png#gh-light-mode-only" alt="microlink logo">
+  <img src="https://github.com/microlinkhq/cdn/raw/master/dist/logo/banner-dark.png#gh-dark-mode-only" alt="microlink logo">
 </div>
 
 [![Deploy with Vercel](https://zeit.co/button)](https://vercel.com/new/project?template=https://github.com/microlinkhq/healthcheck)
