@@ -24,7 +24,7 @@
     "requests"
   ],
   "dependencies": {
-    "debug-logfmt": "~1.0.4",
+    "debug-logfmt": "~1.2.0",
     "got": "~11.8.6",
     "p-reflect": "~2.1.0",
     "p-timeout": "~4.1.0",
