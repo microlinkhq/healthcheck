@@ -27,7 +27,7 @@
     "debug-logfmt": "~1.4.0",
     "got": "~11.8.6",
     "p-reflect": "~2.1.0",
-    "p-timeout": "~4.1.0",
+    "p-timeout": "~7.0.0",
     "send-http": "~1.0.2"
   },
   "devDependencies": {
