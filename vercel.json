@@ -8,7 +8,8 @@
   ],
   "env": {
     "NODE_ENV": "production",
-    "DEBUG": "healthcheck*"
+    "DEBUG": "healthcheck*",
+    "NODE_OPTIONS": "--experimental-require-module"
   },
   "routes": [
     {

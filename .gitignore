@@ -36,3 +36,4 @@ coverage
 .envrc
 bin/darwin
 .vercel
+.env*.local
