@@ -24,22 +24,20 @@
     "requests"
   ],
   "dependencies": {
-    "debug-logfmt": "~1.4.0",
+    "debug-logfmt": "~1.4.14",
     "got": "~11.8.6",
     "p-reflect": "~2.1.0",
     "p-timeout": "~4.1.0",
-    "send-http": "~2.0.0"
+    "send-http": "~3.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "github-generate-release": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
     "git-dirty": "latest",
+    "github-generate-release": "latest",
     "nano-staged": "latest",
-
-
     "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
