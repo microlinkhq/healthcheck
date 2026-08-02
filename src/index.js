@@ -1,5 +1,6 @@
 'use strict'
 
+const NullProtoObj = require('null-prototype-object')
 const debug = require('debug-logfmt')('healthcheck')
 const pReflect = require('p-reflect')
 const pTimeout = require('p-timeout')
@@ -8,7 +9,7 @@ const send = require('send-http')
 const { MAX_CACHE = 60000, REQ_TIMEOUT = 8000 } = process.env
 const healthcheck = require('./healthcheck')
 
-let CACHE = Object.create(null)
+const CACHE = new NullProtoObj()
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -21,7 +22,7 @@ module.exports = async (req, res) => {
     pTimeout(healthcheck(), REQ_TIMEOUT)
   )
 
-  if (isFulfilled) CACHE = value
+  if (isFulfilled) Object.assign(CACHE, value)
   else debug.error(reason.message || reason)
 
   return send(res, 200, CACHE)
