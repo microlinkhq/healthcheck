@@ -5,38 +5,17 @@
 
 [![Deploy with Vercel](https://zeit.co/button)](https://vercel.com/new/project?template=https://github.com/microlinkhq/healthcheck)
 
-> Microservice to retrieve your CloudFlare Health Checks.
+> Microservice to retrieve Microlink API health status.
 
-It retrieves your [CloudFlare Health Checks](https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime/)
+It derives status from the [k8s.microlink.io](https://k8s.microlink.io/) cluster dashboard (`?json`) and exposes it as a small JSON payload:
 
-![](https://i.imgur.com/bD3Vplv.png)
+```json
+{ "status": "healthy" }
+```
 
-in unified way, being possible consume it as JSON payload from anywhere
-
-![](https://i.imgur.com/clmyp9s.png)
+`status` is `healthy` when every `microlink-api` pod is ready and running; otherwise `degraded`.
 
 # Environment Variables
-
-### ZONE_ID
-
-*Required*</br>
-Type: `string`
-
-The zone identifier associated with your domain.
-
-### X_AUTH_EMAIL
-
-*Required*</br>
-Type: `string`
-
-The email associated with your CloudFlare account.
-
-### X_AUTH_KEY
-
-*Required*</br>
-Type: `string`
-
-The authorization token associated with your CloudFlare account.
 
 ### REQ_TIMEOUT
 

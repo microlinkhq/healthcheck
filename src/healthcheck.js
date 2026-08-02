@@ -2,27 +2,21 @@
 
 const got = require('got')
 
-const { ZONE_ID, X_AUTH_EMAIL, X_AUTH_KEY } = process.env
+const ENDPOINT = 'https://k8s.microlink.io/?json'
+const SERVICE = 'microlink-api'
+const HEALTHY_POD = /^(\d+)\/\1 \(running\)$/
 
-const getStatus = healthchecks => {
-  const isHealthy = healthchecks
-    .filter(({ status }) => status !== 'suspended')
-    .every(({ status }) => status === 'healthy')
-  return isHealthy ? 'healthy' : 'degraded'
-}
+const getStatus = pods =>
+  pods.length > 0 && pods.every(({ status }) => HEALTHY_POD.test(status))
+    ? 'healthy'
+    : 'degraded'
 
 module.exports = async () => {
-  const { result: healthchecks } = await got(
-    `https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/healthchecks`,
-    {
-      headers: {
-        'x-auth-email': X_AUTH_EMAIL,
-        'x-auth-key': X_AUTH_KEY
-      }
-    }
-  ).json()
+  const services = await got(ENDPOINT).json()
+  const { pods = [] } =
+    services.find(({ service }) => service === SERVICE) || {}
 
   return {
-    status: getStatus(healthchecks)
+    status: getStatus(pods)
   }
 }

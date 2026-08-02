@@ -1,6 +1,6 @@
 {
   "name": "healthcheck",
-  "description": "Microservice to retrieve your CloudFlare Health Checks",
+  "description": "Microservice to retrieve Microlink API health status",
   "homepage": "https://github.com/healthcheck",
   "version": "0.0.0",
   "main": "src/index.js",
@@ -17,15 +17,16 @@
     "url": "https://github.com/healthcheck/issues"
   },
   "keywords": [
-    "cloudflare",
     "healthcheck",
+    "k8s",
     "microlink",
     "microservice",
-    "requests"
+    "status"
   ],
   "dependencies": {
     "debug-logfmt": "~1.4.14",
     "got": "~11.8.6",
+    "null-prototype-object": "~1.2.7",
     "p-reflect": "~2.1.0",
     "p-timeout": "~4.1.0",
     "send-http": "~3.2.2"
