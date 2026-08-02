@@ -33,13 +33,13 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "conventional-github-releaser": "latest",
+    "github-generate-release": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
     "git-dirty": "latest",
     "nano-staged": "latest",
-    "npm-check-updates": "latest",
-    "prettier-standard": "latest",
+
+
     "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
@@ -62,23 +62,27 @@
     "prerelease": "git-dirty && npm run update:check && npm test && npm run contributors",
     "pretest": "npm run lint",
     "release": "git-authors-cli finepack && git add package.json && standard-version -a",
-    "release:github": "conventional-github-releaser -p angular",
+    "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin master",
     "start": "TZ=UTC NODE_ENV=production DEBUG=healthcheck* node index.js",
-    "test": "exit 0",
-    "update": "ncu -u",
-    "update:check": "ncu -- --error-level 2"
+    "test": "exit 0"
   },
   "private": true,
   "license": "MIT",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "body-max-line-length": [
+        0
+      ]
+    }
   },
   "nano-staged": {
     "*.js": [
-      "prettier-standard"
+      "npx @kikobeats/prettier-standard",
+      "standard --fix"
     ],
     "*.md": [
       "standard-markdown"
