@@ -13,7 +13,7 @@ It derives status from the [k8s.microlink.io](https://k8s.microlink.io/) cluster
 { "status": "healthy" }
 ```
 
-`status` is `healthy` when every `microlink-api` pod is ready and running; otherwise `degraded`.
+`status` is `healthy` when every active `microlink-api` pod is ready and running, terminating pods are ignored, and pending pods stay within a small share of the fleet (normal scale-up). Otherwise `degraded`.
 
 # Environment Variables
 
