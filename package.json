@@ -46,7 +46,7 @@
     "untracked": "latest"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= 18"
   },
   "files": [
     "src"
@@ -64,7 +64,7 @@
     "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin master",
     "start": "TZ=UTC NODE_ENV=production DEBUG=healthcheck* node index.js",
-    "test": "exit 0"
+    "test": "node --test 'test/**/*.js'"
   },
   "private": true,
   "license": "MIT",

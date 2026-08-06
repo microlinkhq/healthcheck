@@ -4,22 +4,16 @@ const got = require('got')
 
 const ENDPOINT = 'https://k8s.microlink.io/?json'
 const SERVICE = 'microlink-api'
-const HEALTHY_POD = /^(\d+)\/\1 \(running\)$/
-const PENDING_POD = /\(pending\)$/
+const SERVING_POD = /^(\d+)\/\1 \(running\)$/
 const TERMINATING_POD = /\(terminating\)$/
+const MIN_SERVING_RATIO = 0.75
 
 const getStatus = pods => {
-  const live = pods.filter(({ status }) => !TERMINATING_POD.test(status))
-  const pending = live.filter(({ status }) => PENDING_POD.test(status))
-  const active = live.filter(({ status }) => !PENDING_POD.test(status))
-  // one entering pod is normal; a large pending share usually means scheduling pressure
-  const maxPending = Math.max(1, Math.floor(live.length / 4))
+  const expected = pods.filter(({ status }) => !TERMINATING_POD.test(status))
+  const serving = expected.filter(({ status }) => SERVING_POD.test(status))
+  const quorum = Math.ceil(expected.length * MIN_SERVING_RATIO)
 
-  return pending.length <= maxPending &&
-    active.length > 0 &&
-    active.every(({ status }) => HEALTHY_POD.test(status))
-    ? 'healthy'
-    : 'degraded'
+  return serving.length > 0 && serving.length >= quorum ? 'healthy' : 'degraded'
 }
 
 module.exports = async () => {
@@ -31,3 +25,5 @@ module.exports = async () => {
     status: getStatus(pods)
   }
 }
+
+module.exports.getStatus = getStatus
