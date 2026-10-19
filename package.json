@@ -28,7 +28,7 @@
     "got": "~11.8.6",
     "null-prototype-object": "~1.2.7",
     "p-reflect": "~2.1.0",
-    "p-timeout": "~4.1.0",
+    "p-timeout": "~8.0.0",
     "send-http": "~3.2.2"
   },
   "devDependencies": {
