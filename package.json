@@ -24,8 +24,8 @@
     "status"
   ],
   "dependencies": {
+    "@kikobeats/got": "~11.8.9",
     "debug-logfmt": "~1.4.14",
-    "got": "~11.8.6",
     "null-prototype-object": "~1.2.7",
     "p-reflect": "~2.1.0",
     "p-timeout": "~4.1.0",
