@@ -1,6 +1,6 @@
 'use strict'
 
-const got = require('got')
+const got = require('@kikobeats/got')
 
 const ENDPOINT = 'https://k8s.microlink.io/?json'
 const SERVICE = 'microlink-api'
